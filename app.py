@@ -6,7 +6,7 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, origins= {"https://flask123.vercel.app"})  # Enable CORS for all routes
 
 # Configure MongoDB
 mongo_uri = os.getenv("MONGO_URI", "mongodb://localhost:27017")  # Default MongoDB URI
