@@ -16,7 +16,7 @@ const Index: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [entries, setEntries] = useState<Entry[]>([]);
   const { toast } = useToast();
-  const API_URL = "http://127.0.0.1:5000/api";  // Default Flask port is 5000
+  const API_URL = "https://flask-classroomng.onrender.com/api";  
 
   // Fetch entries when component mounts
   useEffect(() => {

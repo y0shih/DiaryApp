@@ -8,7 +8,9 @@ import os
 import jwt
 
 app = Flask(__name__)
+
 CORS(app, origins=["https://flask123.vercel.app", "http://localhost:8080"])  # Frontend link here
+
 
 # Configure MongoDB
 mongo_uri = os.getenv("MONGO_URI", "mongodb://localhost:27017/")
