@@ -4,7 +4,7 @@ import { EntryCard } from "@/components/EntryCard";
 import { AddEntryDialog } from "@/components/AddEntryDialog";
 import { useToast } from "@/components/ui/use-toast";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-
+import { Button } from "@/components/ui/button";
 interface Entry {
   id: string;  // Changed from _id to id to match Flask-SQLAlchemy default
   title: string;
@@ -12,7 +12,8 @@ interface Entry {
   date: string;
 }
 
-const Index = () => {
+const Index: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [entries, setEntries] = useState<Entry[]>([]);
   const { toast } = useToast();
   const API_URL = "http://127.0.0.1:5000/api";  // Default Flask port is 5000
@@ -23,6 +24,7 @@ const Index = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
   const fetchEntries = async () => {
     try {
       const response = await fetch(`${API_URL}/entries`);
@@ -96,13 +98,21 @@ const Index = () => {
     }
   };
 
+  
   return (
+    
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="flex flex-col items-start mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Classroom Manager</h1>
           <p className="text-gray-600">Manage your classroom entries efficiently</p>
         </div>
+        {/* <div className="mx-auto max-w-7xl px-6 py-4">
+        <div className="flex justify-end gap-4">
+          <Button variant="outline">Login</Button>
+          <Button>Register</Button> */}
+        {/* </div> */}
+      {/* </div> */}
         
         <AddEntryDialog onSubmit={handleAddEntry} />
 
